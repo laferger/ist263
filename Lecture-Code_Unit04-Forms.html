@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Front End Web Dev</title>
+    <meta charset="utf-8">
+</head>
+<body>
 
+    <form action="mailto:laferger@syr.edu" method="post">
+
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname"><br>
+
+        What school do you attend?
+        <label for="schoolDuke">Duke</label>
+        <input type="radio" id="schoolDuke" name="school" value="Duke">
+        <label for="schoolSU">Syracuse</label>
+        <input type="radio" id="schoolSU" name="school" value="Syracuse">
+        <br>
+
+        <label for="veteran">Are you a veteran?</label>
+        <input type="checkbox" id="veteran" name="veteran" value="yes"> yes
+        <br>
+
+        <label for="adultstudent">Are you an adult student?</label>
+        <input type="checkbox" id="adultstudent" name="adultstudent" value="yes"> yes
+        <br>
+
+        <label for="year">Year:</label>
+        <select id="year" name="year">
+            <option value="Freshman">Freshman</option>
+            <option value="Sophomore">Sophomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
+        </select>
+        <br>
+
+        <label for="comment">Comment</label>
+        <br>
+        <textarea id="comment" name="comment" rows="4" cols="50">
+        </textarea><br>
+
+        <input type="submit" value="Send Form">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+h1 {color: #00ff00;
+}
+/* when you use hex color a # sign is required before the color number */
+/* hex colors are six digits 0-9 or a-f for each digit */
+
+
+a:link {color: #00ff00;}
+a:visited {color: #ff0000;}
+/* the above are pseudo selectors, you need the colon after the element and then state name */
+
+a:hover {
+    background-color: #0000ff;
+        text-decoration-style: wavy;
+    }
+/* you can change any property in css in a pseudo selector */
+
+body {background-color: #000000;
+    background-image: url(images/internet.jpg);
+    background-size: 600px;
+}
+/* styling the body tag means the entire browser window content area will be affected */
+
+p {
+    background-color: #ffffff;
+    margin: 10px; /* this is the area outside the box */
+    padding: 10px; /* this is the space immediately around the content */
+    border: 5px solid #aaaaaa;  /* this is a shortcut property with multiple values */
+    width: 300px;
+}
+
+/* width of the box + the margin x 2 + border x 2 + padding x 2 */
+/* 300 + 20 + 20 + 10 = 350 pixels */
+
+.mylink {
+    border: 1px solid #000000;
+    padding: 20px;
+    margin: 20px;
+}
+
+/* inline elements box will not create space height-wise */
+
+

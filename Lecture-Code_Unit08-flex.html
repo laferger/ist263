@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Unit 8 Floats</title>
+        <meta charset="UTF-8">
+        <style>
+            img {width: 150px;}
+            footer {
+                background-color: #000b45;
+                color: #c9cbd0;
+                font-family: Arial, Helvetica, sans-serif;
+                }
+            .firstfootercontainer, .secondfootercontainer {display: flex;}
+            /* .box1, .box2, .box3, .box4, .box5 {border: 1px solid red;} */
+            .box1 {flex: 1;}  /* these are ratios for size of flexbox column */
+            .box2 {flex: 1;}
+            .box3 {flex: 1;}
+            .box4 {flex: 1;}
+            .box5 {flex: 1;}
+            img {margin: 15px;}
+            p {line-height: 2em;}
+
+            /* puts space between flexboxs
+            .secondfootercontainer {justify-content: space-between;} */
+
+            .secondfootercontainer {}
+            .socialmedialinks {
+                flex-basis: 20%;  /* this is the width in percentage for a flexbox */
+                border: 1px solid #c9cbd0;
+                padding: 20px;
+                }
+            .copywrite {
+                flex-basis: 80%; 
+                border: 1px solid #c9cbd0;
+                padding: 20px;
+                }
+        </style>
+    </head>
+    <body>
+        <footer>
+            <div class="firstfootercontainer">
+                <div class="box1">
+                    <div>
+                        <img src="images/u8_syracuse-university-seal-white.svg">
+                    </div>
+
+                    <div>
+                        <p>
+                            Syracuse University<br>
+                            900 South Crouse Ave.<br>
+                            Syracuse, NY 13244
+                        </p>
+                        <p>
+                            Phone: +1.315.443.1870
+                        </p>
+                    </div>
+                </div>
+                <div class="box2">
+                    <p>
+                        <strong>Popular</strong><br>
+                        Academic Calendar<br>
+                        Campus Map<br>
+                        Careers<br>
+                        Libraries<br>
+                        Majors and Minors<br>
+                        Visits and Tours
+                    </p>
+                </div>
+                <div class="box3">
+                    <p>
+                        <strong> A-Z</strong><br>
+                        Find People <br>
+                        Academic Departments<br>
+                        Schools and Colleges<br>
+                        Sitemap<br>
+                        Search
+                    </p>
+                </div>
+                <div class="box4">
+                    <p>
+                        <strong>Contact</strong><br>
+                        Admissions<br>
+                        Financial Aid<br>
+                        Emergency Contacts<br>
+                        Human Resources<br>
+                        Website Feedback<br>
+                        Make a Gift
+                    </p>
+                </div>
+                <div class="box5">
+                    <p>
+                        <strong>Login</strong><br>
+                        MySlice<br>
+                        BlackBoard<br>
+                        Student Email<br>
+                        Faculty and Staff Email
+                    </p>
+                </div>
+            </div>
+            
+            <div class="secondfootercontainer">
+                <div class="socialmedialinks">
+                    social media links
+                </div>
+                <div class="copywrite">
+                    &copy; Syracuse University
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

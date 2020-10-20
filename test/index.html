@@ -2,17 +2,10 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="http://nshelburne.github.io/ist263/Project/styles.css">
-    <script src="jquery-csv.js"></script>
+    <link rel="stylesheet">
   </head>
 
   <body>
-    
-    <div class="navbar">
-      <a class="active" href="https://nshelburne.github.io/ist263/Project/Index.html">Home</a>
-      <a href="https://nshelburne.github.io/ist263/Project/TopSongs.html">Try it Out</a>
-      <a href="https://nshelburne.github.io/ist263/Project/About.html">About</a>
-    </div>
 
     <p>Discover Music Thats Trending in Other Countries</p>
     <form>
@@ -26,9 +19,11 @@
       <input class= "coloredbutton" type="button" onclick="getRawData()" value="Enter">
     </form>
     
-    <p id="entCountry" ></p>
+
+    <p id="results"></p>
 
     <script type="text/javascript">
+
       function getRawData(){
 
         /* getting dropdown value */
@@ -42,18 +37,18 @@
         const Http = new XMLHttpRequest();
         Http.open("GET", url);
         Http.send();
-        arrayofcsv = $.csv.toArrays(Http.responseText)
-        /* var response = Http.responseText;*/
-
-        Http.onreadystatechange = (e) => {
-          console.log(Http.responseText)
-        }
-
+         
         /* parse data */
+        Http.onreadystatechange = (e) => {       
+          var csv = Http.responseText;
+          var lines = csv.split("\n");
 
-
+          for (var i = 1; i < lines.length; i++) {
+            document.getElementById("results").innerHTML += lines[i]+'<br>';            
+          }          
+          document.getElementById("results").innerHTML += '<hr>';            
+        }
       }
-
     </script>
 
     

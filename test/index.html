@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="jquery-csv.js"></script>
+  </head>
+
+  <body>
+    
+    <div class="navbar">
+      <a class="active" href="https://nshelburne.github.io/ist263/Project/Index.html">Home</a>
+      <a href="https://nshelburne.github.io/ist263/Project/TopSongs.html">Try it Out</a>
+      <a href="https://nshelburne.github.io/ist263/Project/About.html">About</a>
+    </div>
+
+    <p>Discover Music Thats Trending in Other Countries</p>
+    <form>
+      <select class="dropdown" id="mySelect">
+        <option>Select a Country</option>
+        <option>us</option>
+        <option>au</option>
+        <option>br</option>
+        <option>mx</option>
+      </select>
+      <input class= "coloredbutton" type="button" onclick="getRawData()" value="Enter">
+    </form>
+    
+    <p id="entCountry" ></p>
+
+    <script type="text/javascript">
+      function getRawData(){
+
+        /* getting dropdown value */
+        var element = document.getElementById("mySelect");  
+        var country = element.value;                        
+
+        /* concatenate url for file request */
+        var url = 'https://cors-anywhere.herokuapp.com/https://spotifycharts.com/regional/'+country+'/daily/latest/download';
+        
+        /* make get request */
+        const Http = new XMLHttpRequest();
+        Http.open("GET", url);
+        Http.send();
+        arrayofcsv = $.csv.toArrays(Http.responseText)
+        /* var response = Http.responseText;*/
+
+        Http.onreadystatechange = (e) => {
+          console.log(Http.responseText)
+        }
+
+        /* parse data */
+
+
+      }
+
+    </script>
+
+    
+
+  </body> 
+
+
+</html>

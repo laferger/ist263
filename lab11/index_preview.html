@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lab 11</title>
+    <script>
+        function WinnerMessage () {            
+            document.getElementById("messages").innerHTML = 'You Won!';
+        }
+        function TryAgain () {     
+            document.getElementById("messages").innerHTML = 'Wrong Shell - Try Again';
+        }
+
+    </script>
+</head>
+<body onload="Test();">
+    <h1>Choose a Walnut</h1>
+    <img src="../images/walnut.jpg" alt="first walnut" onclick="WinnerMessage();">
+    <img src="../images/walnut.jpg" alt="second walnut" onclick="TryAgain();">
+    <img src="../images/walnut.jpg" alt="third walnut" onclick="TryAgain();">
+    
+    <div id="messages"></div>
+</body>
+</html>
+

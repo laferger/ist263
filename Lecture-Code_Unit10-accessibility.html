@@ -2,29 +2,95 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Intro to JavaScript</title>
-    <script src="myscript.js"></script>
-    <!-- ^^ external javascript link src attribute tells you where the file is -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        #skip-to-content {
+            position: absolute; 
+            left: -999px;  /* positions skip to content off screen */
+            background-color: white;
+            border: 1px solid gray;
+            }
+        #skip-to-content:focus {position: absolute; left: 10px;}
+        /* pseudo class that moves skip to content back on screen */
+    </style>
 </head>
+
 <body>
 
-<script>
-    /* this is where we write the javascript code */
-    /* the script element can go anywhere */
-    /* case sensitive means myName is not the same as myname */
-    alert('Hello Web Developers!');  
-    /* first we wrote our command, the info the command takes is sent in parenthesis 
-        since we're a string, it must be in quotes, end of command gets a semicolon */
-</script>
+    <a id="skip-to-content" href="#content">Skip to Content</a>
+    <!-- this will link you down to the content a tag with id of skip-to-content -->
+    <a href="about.html"  tabindex="5">About</a>
+    <a href="index.html"  tabindex="4">Home</a>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est 
-    laborum.</p>
+    <header>
+    <h1>This is the Title of My Page</h1>
+    <!-- headings are meant to be hierachical -->
+    <!-- h1 - only once on page, h2 is a subheading  -->
+</header>
+
+    <main>
+        <img src="header.jpg" alt="people shaking hands">
+        <!-- describe the image, don't include "this is an image of" kind of text -->
+    </main>
+
+    <div>
+        <a href="http://wwww.google.com" tabindex="1">Google</a>
+        <a href="http://wwww.ebay.com" tabindex="2">Ebay</a>
+        <a href="http://wwww.amazon.com" tabindex="3">Amazon</a>
+    </div>
+    <!-- the tabindex attribute allows us to change the order the user gets when tabbing through links -->
+
+    <a id="content"></a>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <h2>FAQS</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+
 
 </body>
 </html>
-

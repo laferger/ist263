@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel="stylesheet" href="lauren.css">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+        <style>
+            .clear{clear: both;}
+            .part1{float: left;}
+            .part1{display: flex;}
+            .part2{float: left; flex-wrap: wrap;}
+            .part2{display: flex;}
+            #hamicon {width: 35px; 
+                display: none;}
+        @media only screen and (max-width: 600px) {
+            nav a {
+                width: 100%;
+                padding: 10px 0px;
+                display: block;
+            }
+            span {display: none;}
+            #hamicon {display: block;}
+            #navlinks {display: none;}
+        }
+        </style>
+        <script>
+            function TurnNavOnOff() {
+                if (document.getElementById("navlinks").style.getPropertyValue("display") == 'block') {
+                    document.getElementById('navlinks').style.display = 'none';
+                }
+                else {
+                    document.getElementById('navlinks').style.display = 'block';
+                }
+                
+            }
+        </script>
+    </head>
+        
+    <body class="home">
+        <a id="content"></a>
+        <a id="skip-to-content" href="#content">Skip to Content</a>
+            <nav>
+            <img src="../Images/hamburger.png" alt="hamburger icon" id="hamicon" onclick="TurnNavOnOff();">
+            <div id="navlinks">
+                <a href="index.html">Home</a> <span class="pipe"> |  </span>
+                <a href="aboutme.html">About Me</a> <span class="pipe"> |  </span> 
+                <a href="remedies.html">Remedies</a> <span class="pipe"> |  </span> 
+                <a href="mystory.html">My Story</a>
+            </div>
+            </nav>
+            
+            <h1>Healthier = Happier :)</h1>
+
+            <div class="home-wrapper"> 
+            <section class="Part1">
+
+            <img src="../pictures/media/homepage.jpg" alt="Strawberries and Raspberries in a bowl">
+            </section>
+
+            <div class="Part2">
+            <p class="home-text">
+            Hi! My name is Lauren Kramer and I am here to tell you a little bit about myself. I am a passionate and driven person who is eager to learn new things. I love fashion, exercising, being with my friends and family, and now health. Health is not something that I would have always considered myself passionate about. However, a few years ago I was forced to learn A LOT about it. While I was in high school I started not to feel like myself. I was tired, achy, and began to experience an upsetting new normal. This discomfort forced me to visit numerous doctors where I learned I struggle with an elevated ESR (Erythrocyte Sedimentation Rate). What that means is that I have inflammation. Nobody knows where this inflammation is coming from, but at least I know it is the cause of me not feeling well.
+            Even after frequent doctors visits, screenings, and blood tests, my physicians could not figure out what was causing my inflammation and a precise way to cure it. This is where my curiosity kicked in. My parents, doctors, and I researched which natural remedies I should try first and I began experimenting to see what helped me the most. While we all still have some unanswered questions, I have found several anti-inflammatories that have helped me tremendously. This is where my passion for health began. Explore my website for my secret health remedy!
+            </p>
+            </div>
+            </div>
+        
+            <div class="footer">
+
+                <hr>
+                &copy;2020
+    
+            </div>
+    </body>
+    </html>

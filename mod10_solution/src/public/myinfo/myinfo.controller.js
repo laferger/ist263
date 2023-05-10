@@ -4,15 +4,23 @@
 angular.module('public')
 .controller('MyInfoController', MyInfoController);
 
-MyInfoController.$inject = ['UserInfoStorageService', 'MenuService'];
-function MyInfoController(UserInfoStorageService, MenuService) {
-  var myin = this;
-  myin.userInfo = UserInfoStorageService.getUserInfo();
-  myin.hasData = myin.userInfo ? true : false ;
-  if (myin.userInfo) {
-    MenuService.getOneMenuItem(myin.userInfo.dish)
+MyInfoController.$inject = ['UserService', 'MenuService'];
+function MyInfoController(UserService, MenuService) {
+  var ctrl = this;
+
+  ctrl.userInfo = UserService.getUserInfo();
+
+  if (ctrl.userInfo == null) {
+    ctrl.user = false;
+  }
+  else {
+    ctrl.user = true;
+  } 
+
+  if (ctrl.userInfo) {
+    MenuService.getOneMenuItem(ctrl.userInfo.dish)
     .then(function (menuItemInfo) {
-        myin.menuItemInfo = menuItemInfo;
+      ctrl.menuItemInfo = menuItemInfo;
     });
   };
 }

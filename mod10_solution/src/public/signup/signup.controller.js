@@ -4,30 +4,28 @@
 angular.module('public')
 .controller('SignUpController', SignUpController);
 
-SignUpController.$inject = ['MenuService', 'UserInfoStorageService'];
-function SignUpController(MenuService, UserInfoStorageService) {
+SignUpController.$inject = ['MenuService', 'UserService'];
+function SignUpController(MenuService, UserService) {
     var reg = this;
-    reg.user = {};
-    reg.dishNotExists = false;
+    //reg.user = {};
+    reg.favorite = false;
     reg.completed = false;
 
-    reg.checkDish = function (menuNumber) {
-        return MenuService.getOneMenuItem(menuNumber)
+    reg.menuItem = function (number) {
+        reg.data = false;
+        return MenuService.getOneMenuItem(number)
         .then(function (data) {
-            if (data){ 
-                reg.dishNotExists = false;
-            } else {
-                reg.dishNotExists = true;
+            if (!data){ 
+                reg.favorite = true;
             };
-            console.log(data)
             return data;
         });
     };
 
     reg.submit = function () {
-        reg.checkDish(reg.user.dish).then( function(data){
+        reg.menuItem(reg.user.dish).then( function(data){
             if (data) {
-                UserInfoStorageService.saveUserInfo(reg.user);
+                UserService.saveUserInfo(reg.user);
                 reg.completed = true;
             };
         });

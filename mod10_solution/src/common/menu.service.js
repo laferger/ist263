@@ -17,11 +17,33 @@ function MenuService($http, ApiPath) {
 
 
   service.getMenuItems = function (category) {
-    return $http.get(ApiPath + '/menu_items/' + category + '.json').then(function (response) {
+    var config = {};
+    if (category) {
+      config.params = {'category': category};
+    }
+
+    return $http.get(ApiPath + '/menu_items.json', config).then(function (response) {
+      console.log(response.data)
       return response.data;
     });
   };
 
+  service.getOneMenuItem = function (menuNumber) {
+    if (!menuNumber) {
+      return Promise.resolve(null);
+    };
+    let letters = menuNumber.match(/^[A-Z]{1,2}/);
+    let numbers = parseInt(menuNumber.match(/\d{1,2}/)) - 1;
+    let url = ApiPath + '/menu_items/' + letters + '/menu_items/' + numbers + '.json';
+    return $http.get(url).then(function (response) {
+      let menuItemInfo = response.data;
+      if (menuItemInfo) {
+        menuItemInfo.menuLetters = letters[0];
+        menuItemInfo.menuNumbers = numbers;
+      };
+      return menuItemInfo;
+    });
+  };
 }
 
 

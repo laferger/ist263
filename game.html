@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>File Path Practice Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1100px;
+      margin: 30px auto;
+      line-height: 1.5;
+    }
+
+    .tree {
+      background: #f4f4f4;
+      padding: 25px;
+      border-radius: 8px;
+      overflow-x: auto;
+      text-align: center;
+    }
+
+    .sticky-tree {
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 10;
+      padding-top: 10px;
+      padding-bottom: 15px;
+    }
+
+    .root-node {
+      display: inline-block;
+      background: #ffe08a;
+      border: 2px solid #c59b22;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .tree-row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 20px;
+      align-items: flex-start;
+    }
+
+    .top-folder-card {
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      min-width: 260px;
+    }
+
+    .folder-name {
+      background: #ffe08a;
+      border: 1px solid #c59b22;
+      border-radius: 8px;
+      padding: 8px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .subfolder-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .subfolder-card {
+      background: #fffdf4;
+      border: 1px solid #d8bd5f;
+      border-radius: 8px;
+      padding: 10px;
+      min-width: 110px;
+    }
+
+    .subfolder-name {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .file {
+      background: white;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      padding: 5px;
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
+    .question {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>File Path Practice Game</h1>
+
+  <p>
+    Type the relative file path from the starting HTML file to the target file.
+  </p>
+
+  <div class="sticky-tree">
+    <h2>File Hierarchy</h2>
+    <div id="tree" class="tree"></div>
+  </div>
+
+  <div id="game"></div>
+
+  <button onclick="newGame()">New Game</button>
+
+  <script>
+    const topFolderNames = [
+      "assets", "pages", "content", "public",
+      "resources", "projects", "media", "site"
+    ];
+
+    const subFolderNames = [
+      "images", "css", "js", "docs", "blog",
+      "downloads", "photos", "scripts", "styles", "articles"
+    ];
+
+    const fileNames = [
+      "index.html", "home.html", "about.html", "contact.html",
+      "gallery.html", "style.css", "main.css", "script.js",
+      "app.js", "logo.png", "photo.jpg", "resume.pdf",
+      "article.html", "profile.html", "team.html", "faq.html",
+      "pricing.html", "login.html", "signup.html", "footer.css",
+      "header.css", "theme.css", "utils.js", "nav.js",
+      "banner.png", "icon.png", "avatar.jpg", "cover.jpg",
+      "brochure.pdf", "report.pdf"
+    ];
+
+    let hierarchy = {};
+    let files = [];
+    let questions = [];
+
+    function randomItem(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function shuffle(arr) {
+      return [...arr].sort(() => Math.random() - 0.5);
+    }
+
+    function generateHierarchy() {
+      hierarchy = {};
+      files = [];
+
+      const usedNames = new Set();
+
+      const topFolderCount = 2 + Math.floor(Math.random() * 2);
+      const topFolders = shuffle(topFolderNames).slice(0, topFolderCount);
+
+      topFolders.forEach(topFolder => {
+        hierarchy[topFolder] = {};
+
+        const subFolderCount = 1 + Math.floor(Math.random() * 2);
+        const subFolders = shuffle(subFolderNames).slice(0, subFolderCount);
+
+        subFolders.forEach(subFolder => {
+          hierarchy[topFolder][subFolder] = [];
+
+          const fileCount = 2 + Math.floor(Math.random() * 2);
+
+          for (let i = 0; i < fileCount; i++) {
+            const availableNames = fileNames.filter(name => !usedNames.has(name));
+
+            if (availableNames.length === 0) {
+              break;
+            }
+
+            const fileName = randomItem(availableNames);
+            usedNames.add(fileName);
+
+            hierarchy[topFolder][subFolder].push(fileName);
+
+            files.push({
+              topFolder,
+              subFolder,
+              name: fileName,
+              path: `${topFolder}/${subFolder}/${fileName}`
+            });
+          }
+        });
+      });
+    }
+
+    function displayTree() {
+      let html = `
+        <div class="root-node">📁 ist 263</div>
+        <div class="tree-row">
+      `;
+
+      Object.keys(hierarchy).forEach(topFolder => {
+        html += `
+          <div class="top-folder-card">
+            <div class="folder-name">📁 ${topFolder}</div>
+            <div class="subfolder-row">
+        `;
+
+        Object.keys(hierarchy[topFolder]).forEach(subFolder => {
+          html += `
+            <div class="subfolder-card">
+              <div class="subfolder-name">📁 ${subFolder}</div>
+          `;
+
+          hierarchy[topFolder][subFolder].forEach(file => {
+            html += `<div class="file">📄 ${file}</div>`;
+          });
+
+          html += `</div>`;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+
+      document.getElementById("tree").innerHTML = html;
+    }
+
+    function getRelativePath(fromFile, toFile) {
+      const fromFolders = [fromFile.topFolder, fromFile.subFolder];
+      const toParts = [toFile.topFolder, toFile.subFolder, toFile.name];
+
+      let commonCount = 0;
+
+      while (
+        commonCount < fromFolders.length &&
+        commonCount < toParts.length &&
+        fromFolders[commonCount] === toParts[commonCount]
+      ) {
+        commonCount++;
+      }
+
+      const stepsUp = fromFolders.length - commonCount;
+      const relativeParts = [];
+
+      for (let i = 0; i < stepsUp; i++) {
+        relativeParts.push("..");
+      }
+
+      relativeParts.push(...toParts.slice(commonCount));
+
+      return relativeParts.join("/");
+    }
+
+    function generateQuestions() {
+      questions = [];
+
+      for (let i = 0; i < 5; i++) {
+        let fromFile = randomItem(files);
+        let toFile = randomItem(files);
+
+        while (fromFile.path === toFile.path) {
+          toFile = randomItem(files);
+        }
+
+        questions.push({
+          fromFile,
+          toFile,
+          answer: getRelativePath(fromFile, toFile)
+        });
+      }
+    }
+
+    function displayQuestions() {
+      const game = document.getElementById("game");
+      game.innerHTML = "";
+
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+
+        div.innerHTML = `
+          <h3>Question ${index + 1}</h3>
+
+          <p>
+            You are writing a link inside:
+            <strong>${q.fromFile.name}</strong>
+          </p>
+
+          <p>
+            What path should you use to link to:
+            <strong>${q.toFile.name}</strong>?
+          </p>
+
+          <input id="answer-${index}" placeholder="Type file path here" />
+          <br>
+          <button id="check-btn-${index}" onclick="checkAnswer(${index})">Check Answer</button>
+
+          <p id="result-${index}"></p>
+        `;
+
+        game.appendChild(div);
+      });
+    }
+
+    function checkAnswer(index) {
+      const userAnswer = document
+        .getElementById(`answer-${index}`)
+        .value
+        .trim();
+
+      const result = document.getElementById(`result-${index}`);
+      const correctAnswer = questions[index].answer;
+
+      if (userAnswer === correctAnswer) {
+        result.innerHTML = "Correct!";
+        result.className = "correct";
+      } else {
+        result.innerHTML = `Not quite. The correct path is: <code>${correctAnswer}</code>`;
+        result.className = "incorrect";
+      }
+
+      document.getElementById(`check-btn-${index}`).disabled = true;
+    }
+
+    function newGame() {
+      generateHierarchy();
+      displayTree();
+      generateQuestions();
+      displayQuestions();
+    }
+
+    newGame();
+  </script>
+
+</body>
+</html>
